@@ -157,23 +157,25 @@ export function HoloProjectHub() {
             {/* Visualizer Theme overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10 pointer-events-none" />
             
-            {/* Project Cover Image */}
-            <div className="relative h-44 w-full overflow-hidden border-b border-white/10 bg-[#06120b] flex items-center justify-center">
-              <img
-                src={project.image}
-                alt={project.title}
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center pointer-events-none bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-                <span className="text-sm font-bold text-white tracking-wider uppercase drop-shadow">{project.title}</span>
-                <span className="text-[9px] font-mono text-emerald-400 mt-1 uppercase tracking-widest">{project.category || "AI / ML"}</span>
+            {/* Project Cover Canvas Card */}
+            <div className="relative h-44 w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#041209] via-[#020805] to-[#081a10] flex flex-col justify-between p-4">
+              <div className="flex items-center justify-between z-20">
+                <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-mono text-emerald-400 uppercase tracking-wider">
+                  {project.category || "AI/ML"}
+                </span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#22c55e]" />
               </div>
-              <div className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded bg-black/80 border border-white/10 text-[9px] font-mono text-emerald-400 uppercase tracking-wider">
-                {project.category || "AI/ML"}
+              <div className="z-20 space-y-1">
+                <h4 className="text-base font-extrabold text-white tracking-tight uppercase group-hover:text-emerald-400 transition-colors">
+                  {project.title}
+                </h4>
+                <p className="text-[11px] text-zinc-400 font-mono truncate">{project.tagline}</p>
               </div>
+              {/* Subtle background grid pattern */}
+              <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
+                backgroundImage: "radial-gradient(circle, #10b981 1px, transparent 1px)",
+                backgroundSize: "20px 20px"
+              }} />
             </div>
 
             {/* Info details */}
