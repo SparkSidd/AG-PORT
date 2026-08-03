@@ -158,12 +158,19 @@ export function HoloProjectHub() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10 pointer-events-none" />
             
             {/* Project Cover Image */}
-            <div className="relative h-44 w-full overflow-hidden border-b border-white/10">
+            <div className="relative h-44 w-full overflow-hidden border-b border-white/10 bg-[#06120b] flex items-center justify-center">
               <img
-                src={project.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600"}
+                src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-95"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
               />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center pointer-events-none bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <span className="text-sm font-bold text-white tracking-wider uppercase drop-shadow">{project.title}</span>
+                <span className="text-[9px] font-mono text-emerald-400 mt-1 uppercase tracking-widest">{project.category || "AI / ML"}</span>
+              </div>
               <div className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded bg-black/80 border border-white/10 text-[9px] font-mono text-emerald-400 uppercase tracking-wider">
                 {project.category || "AI/ML"}
               </div>

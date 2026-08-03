@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Github, ExternalLink, Code2, Layers } from "lucide-react"
+import { ProjectUIPreview } from "./project-ui-preview"
 // CSS-only project visualizer — no canvas, no GPU drain
 const PROJECT_THEMES: Record<string, { bg: string; grid?: string; glow: string }> = {
 "phish-detect":       { bg: "#050f08", grid: "#22c55e", glow: "rgba(34,197,94,0.15)" },
@@ -200,24 +201,16 @@ Source Code
 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10 lg:hidden pointer-events-none" />
 <ProjectVisualizer projectId={project.id} />
 {/* Optional Demo Media Renderer (Video or Image overlay) */}
-{/* Demo Media Renderer (Realistic Software UI Screenshot overlay) */}
-{project.demoMedia && (
-<div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-zinc-950/70 backdrop-blur-sm pointer-events-auto">
-{project.demoMedia.endsWith('.mp4') || project.demoMedia.endsWith('.webm') ? (
-<video 
-src={project.demoMedia} 
-autoPlay loop muted playsInline
-className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
-/>
-) : (
-<img 
-src={project.demoMedia} 
-alt={project.title}
-className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
-/>
-)}
+{/* Project Software UI Preview */}
+<div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-zinc-950/80 backdrop-blur-md pointer-events-auto">
+  <ProjectUIPreview 
+    id={project.id} 
+    title={project.title} 
+    category={project.category || "AI / ML"} 
+    techStack={project.techStack} 
+    howItWorks={project.howItWorks} 
+  />
 </div>
-)}
 {/* Stats overlay */}
 <div className="absolute bottom-6 left-6 right-6 z-30 hidden lg:flex items-center justify-between border-t border-white/10 pt-6">
 <div>
