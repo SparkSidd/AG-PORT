@@ -1,0 +1,698 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --bg-color: #000308;
+    --light-color: #00e5ff;
+    --highlight-color: #ffb86c;
+    --glow-color-1: rgba(0, 229, 255, 0.8);
+    --glow-color-2: rgba(0, 150, 255, 0.6);
+    --highlight-glow: rgba(255, 184, 108, 0.7);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.5);
+  /* green-500/50 */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.8);
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+  /* font-size: 60px; */
+  /* Disabled to allow Tailwind responsive classes */
+  /* font-weight: bold; */
+  /* color: #ffffff; */
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.glitch:before,
+.glitch:after {
+  display: block;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  width: 100%;
+  /* Ensure it matches parent width */
+}
+
+.glitch:before {
+  animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.glitch:after {
+  animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+@keyframes glitch-it {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+/* 3D Cube Structure (Missing from original prompt) */
+.content, .container-full, .container, .container-reflect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+.face {
+  position: absolute;
+  width: 1000px;
+  height: 100px;
+  backface-visibility: hidden;
+  overflow: hidden; /* Important for scrolling marquee */
+}
+/* Position the faces of the cube */
+.face.front  { transform: translateZ(500px); }
+.face.back   { transform: rotateY(180deg) translateZ(500px); }
+.face.right  { transform: rotateY(90deg) translateZ(500px); }
+.face.left   { transform: rotateY(-90deg) translateZ(500px); }
+.face.top    { width: 1000px; height: 1000px; transform: rotateX(90deg) translateZ(50px); }
+.face.bottom { width: 1000px; height: 1000px; transform: rotateX(-90deg) translateZ(50px); }
+
+/* Reflections */
+.container-reflect {
+  transform: scaleY(-1) translateY(100px);
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+/* User's provided animations */
+@keyframes left {
+  100% { margin-left: -54000px; }
+}
+@keyframes back {
+  100% { margin-left: -54870px; }
+}
+@keyframes right {
+  100% { margin-left: -55740px; }
+}
+@keyframes filter-animation {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(100deg); }
+}
+@keyframes zoom-in {
+  0% { transform: scale(1); }
+  100% { transform: scale(2.5); }
+}
+@keyframes blur {
+  0% { filter: blur(0px); }
+  100% { filter: blur(3px); }
+}
+@keyframes brightness {
+  0% { filter: brightness(1) contrast(1); }
+  100% { filter: brightness(0.8) contrast(1.3); }
+}
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(34, 197, 94, 0.2); }
+  50% { text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+}
+
+/* Wiring user animations */
+.face.left .text { animation: left 120s linear infinite; }
+.face.back .text { animation: back 120s linear infinite; }
+.face.right .text { animation: right 120s linear infinite; }
+.animated.hue { 
+  background: rgba(16, 185, 129, 0.2); 
+  mix-blend-mode: overlay; 
+  animation: filter-animation 10s infinite; 
+}
+.backgroundImage { 
+  opacity: 0.4;
+  mix-blend-mode: luminosity;
+  animation: zoom-in 20s infinite alternate, brightness 5s infinite alternate; 
+}
+.boyImage { 
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.3);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+}
+.text {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  color: #34d399; /* Emerald 400 */
+  animation: text-glow 2s infinite alternate;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0%, 100% {
+    opacity: 0;
+  }
+  5%, 85% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes floorGlow {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes mainGlow {
+  from {
+    opacity: 0.5;
+    filter: blur(30px);
+  }
+  to {
+    opacity: 0.7;
+    filter: blur(20px);
+  }
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100px -50px;
+  }
+}
+
+/* Cybercore Background Styles - Bright, Unique Cyber-Tunnel Version */
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #000c1a 0%, #000308 100%);
+  perspective: 800px;
+  z-index: 0;
+}
+
+/* Floor Grid */
+.floor {
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 60%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.3) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.3) 2px, transparent 2px);
+  background-size: 50px 50px;
+  transform: rotateX(75deg) translateZ(0);
+  transform-origin: bottom center;
+  animation: moveGrid 12s linear infinite, floorGlow 3s ease-in-out infinite;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 30%, transparent);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 30%, transparent);
+}
+
+/* Add Wall/Ceiling Grid for a full 3D tunnel feel (covers more area and is very unique) */
+.scene::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 50%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(-75deg) translateZ(0);
+  transform-origin: top center;
+  animation: moveGrid 16s linear infinite reverse;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+/* Multiple Columns instead of just one center column */
+.main-column {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 100%;
+  background: radial-gradient(ellipse at center, var(--glow-color-2) 0%, transparent 70%);
+  filter: blur(25px);
+  opacity: 0.8;
+  animation: mainGlow 4s ease-in-out infinite alternate;
+}
+
+/* Side vertical light pillars to frame the screen */
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.15) 0%, transparent 10%, transparent 90%, rgba(0, 229, 255, 0.15) 100%),
+    linear-gradient(to top, rgba(255, 184, 108, 0.1) 0%, transparent 20%);
+  pointer-events: none;
+}
+
+.light-stream-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.light-beam {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  opacity: 0;
+  transform-origin: bottom center;
+  animation-name: rise, fade;
+  animation-timing-function: linear, linear;
+  animation-iteration-count: infinite, infinite;
+}
+
+.light-beam.primary {
+  background: linear-gradient(to top, transparent, #00f0ff, transparent);
+  box-shadow: 0 0 15px 4px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+}
+
+.light-beam.secondary {
+  background: linear-gradient(to top, transparent, #ffb86c, transparent);
+  box-shadow: 0 0 15px 4px rgba(255, 184, 108, 0.9), 0 0 30px rgba(255, 184, 108, 0.5);
+}
+
+
+
+/* 3D Cube Structure (Missing from original prompt) */
+.content, .container-full, .container, .container-reflect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+.face {
+  position: absolute;
+  width: 1000px;
+  height: 100px;
+  backface-visibility: hidden;
+  overflow: hidden; /* Important for scrolling marquee */
+}
+/* Position the faces of the cube */
+.face.front  { transform: translateZ(500px); }
+.face.back   { transform: rotateY(180deg) translateZ(500px); }
+.face.right  { transform: rotateY(90deg) translateZ(500px); }
+.face.left   { transform: rotateY(-90deg) translateZ(500px); }
+.face.top    { width: 1000px; height: 1000px; transform: rotateX(90deg) translateZ(50px); }
+.face.bottom { width: 1000px; height: 1000px; transform: rotateX(-90deg) translateZ(50px); }
+
+/* Reflections */
+.container-reflect {
+  transform: scaleY(-1) translateY(100px);
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+/* User's provided animations */
+@keyframes left {
+  100% { margin-left: -54000px; }
+}
+@keyframes back {
+  100% { margin-left: -54870px; }
+}
+@keyframes right {
+  100% { margin-left: -55740px; }
+}
+@keyframes filter-animation {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(100deg); }
+}
+@keyframes zoom-in {
+  0% { transform: scale(1); }
+  100% { transform: scale(2.5); }
+}
+@keyframes blur {
+  0% { filter: blur(0px); }
+  100% { filter: blur(3px); }
+}
+@keyframes brightness {
+  0% { filter: brightness(1) contrast(1); }
+  100% { filter: brightness(0.8) contrast(1.3); }
+}
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(34, 197, 94, 0.2); }
+  50% { text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+}
+
+/* Wiring user animations */
+.face.left .text { animation: left 120s linear infinite; }
+.face.back .text { animation: back 120s linear infinite; }
+.face.right .text { animation: right 120s linear infinite; }
+.animated.hue { 
+  background: rgba(16, 185, 129, 0.2); 
+  mix-blend-mode: overlay; 
+  animation: filter-animation 10s infinite; 
+}
+.backgroundImage { 
+  opacity: 0.4;
+  mix-blend-mode: luminosity;
+  animation: zoom-in 20s infinite alternate, brightness 5s infinite alternate; 
+}
+.boyImage { 
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.3);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+}
+.text {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  color: #34d399; /* Emerald 400 */
+  animation: text-glow 2s infinite alternate;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0%, 100% {
+    opacity: 0;
+  }
+  5%, 85% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes floorGlow {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes mainGlow {
+  from {
+    opacity: 0.5;
+    filter: blur(30px);
+  }
+  to {
+    opacity: 0.7;
+    filter: blur(20px);
+  }
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100px -50px;
+  }
+}
+
+/* Cybercore Background Styles - Bright, Unique Cyber-Tunnel Version */
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #000c1a 0%, #000308 100%);
+  perspective: 800px;
+  z-index: 0;
+}
+
+/* Floor Grid */
+.floor {
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 60%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.3) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.3) 2px, transparent 2px);
+  background-size: 50px 50px;
+  transform: rotateX(75deg) translateZ(0);
+  transform-origin: bottom center;
+  animation: moveGrid 12s linear infinite, floorGlow 3s ease-in-out infinite;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 30%, transparent);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 30%, transparent);
+}
+
+/* Add Wall/Ceiling Grid for a full 3D tunnel feel (covers more area and is very unique) */
+.scene::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 50%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(-75deg) translateZ(0);
+  transform-origin: top center;
+  animation: moveGrid 16s linear infinite reverse;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+/* Multiple Columns instead of just one center column */
+.main-column {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 100%;
+  background: radial-gradient(ellipse at center, var(--glow-color-2) 0%, transparent 70%);
+  filter: blur(25px);
+  opacity: 0.8;
+  animation: mainGlow 4s ease-in-out infinite alternate;
+}
+
+/* Side vertical light pillars to frame the screen */
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.15) 0%, transparent 10%, transparent 90%, rgba(0, 229, 255, 0.15) 100%),
+    linear-gradient(to top, rgba(255, 184, 108, 0.1) 0%, transparent 20%);
+  pointer-events: none;
+}
+
+.light-stream-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.light-beam {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  opacity: 0;
+  transform-origin: bottom center;
+  animation-name: rise, fade;
+  animation-timing-function: linear, linear;
+  animation-iteration-count: infinite, infinite;
+}
+
+.light-beam.primary {
+  background: linear-gradient(to top, transparent, #00f0ff, transparent);
+  box-shadow: 0 0 15px 4px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+}
+
+.light-beam.secondary {
+  background: linear-gradient(to top, transparent, #ffb86c, transparent);
+  box-shadow: 0 0 15px 4px rgba(255, 184, 108, 0.9), 0 0 30px rgba(255, 184, 108, 0.5);
+}
