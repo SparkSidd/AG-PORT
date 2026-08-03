@@ -200,20 +200,20 @@ Source Code
 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10 lg:hidden pointer-events-none" />
 <ProjectVisualizer projectId={project.id} />
 {/* Optional Demo Media Renderer (Video or Image overlay) */}
-{/* Optional Demo Media Renderer (Video or Image overlay) */}
+{/* Demo Media Renderer (Realistic Software UI Screenshot overlay) */}
 {project.demoMedia && (
-<div className="absolute inset-0 z-20 flex items-center justify-center p-8 backdrop-blur-[2px] bg-black/40 transition-all duration-700 pointer-events-none hover:bg-transparent">
+<div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-zinc-950/70 backdrop-blur-sm pointer-events-auto">
 {project.demoMedia.endsWith('.mp4') || project.demoMedia.endsWith('.webm') ? (
 <video 
 src={project.demoMedia} 
 autoPlay loop muted playsInline
-className="w-full max-h-full object-contain rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.15)] border border-emerald-500/20"
+className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
 />
 ) : (
 <img 
 src={project.demoMedia} 
 alt={project.title}
-className="w-full max-h-full object-contain rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.15)] border border-emerald-500/20"
+className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
 />
 )}
 </div>
