@@ -49,22 +49,23 @@ animation: `spin ${8 + i * 3}s linear infinite ${i % 2 ? "reverse" : ""}`,
 );
 }
 interface Project {
-id: string
-title: string
-tagline?: string
-description: string
-longDescription?: string
-problem?: string
-solution?: string
-howItWorks?: string[]
-keyFeatures?: string
-engineeringHighlights?: string
-outcome?: string
-image: string
-techStack?: string[]
-githubLink?: string
-liveLink?: string
-demoMedia?: string
+  id: string
+  title: string
+  tagline?: string
+  category?: string
+  description: string
+  longDescription?: string
+  problem?: string
+  solution?: string
+  howItWorks?: string[]
+  keyFeatures?: string
+  engineeringHighlights?: string
+  outcome?: string
+  image: string
+  techStack?: string[]
+  githubLink?: string
+  liveLink?: string
+  demoMedia?: string
 }
 interface ProjectDetailsModalProps {
 project: Project | null

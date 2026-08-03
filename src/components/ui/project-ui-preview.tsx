@@ -13,7 +13,7 @@ interface ProjectUIProps {
   howItWorks?: string[];
 }
 
-export function ProjectUIPreview({ id, title, category, techStack = [], howItWorks = [] }: ProjectUIProps) {
+export function ProjectUIPreview({ id, techStack = [], howItWorks = [] }: ProjectUIProps) {
   // 1. PhishDetect AI - Flow Architecture
   if (id === "phishdetect-ai") {
     return (
