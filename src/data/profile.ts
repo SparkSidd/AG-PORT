@@ -130,8 +130,8 @@ export const PROFILE = {
                 "Behavioral Detection"
             ],
             engineeringHighlights: "Real-time AI components with explainable verdict system.",
-            image: "/phishdetect-ui.png",
-            demoMedia: "/phishdetect-ui.png",
+            image: "/phishdetect-thumb.jpg",
+            demoMedia: "/phishdetect-description.png",
             href: "https://github.com/SparkSidd",
             techStack: ["React", "JavaScript", "Chrome Extension API", "FastAPI", "Python", "Pydantic", "HTTPX", "Google Web Risk API"],
             githubLink: "https://github.com/SparkSidd",
@@ -152,7 +152,7 @@ export const PROFILE = {
                 "LLM-powered Chat Interface"
             ],
             engineeringHighlights: "RAG, LLM, Semantic Retrieval, OCR",
-            image: "/neurodoc-ui.png",
+            image: "/neurodoc.thumb.png",
             demoMedia: "/neurodoc-ui.png",
             href: "https://github.com/SparkSidd",
             techStack: ["React", "FastAPI", "Gemini API", "ElevenLabs", "Python", "OCR Libraries"],
@@ -174,7 +174,7 @@ export const PROFILE = {
                 "Live translation interface"
             ],
             engineeringHighlights: "Real-time inference using OpenCV and MediaPipe.",
-            image: "/silentbridge-ui.png",
+            image: "/silent bridge.thumb.png",
             demoMedia: "/silentbridge-ui.png",
             href: "https://github.com/SparkSidd",
             techStack: ["Python", "OpenCV", "MediaPipe", "TensorFlow/PyTorch", "React"],
@@ -196,7 +196,7 @@ export const PROFILE = {
                 "Pattern Recognition and Fraud Detection"
             ],
             engineeringHighlights: "Anomaly Detection, Pattern Recognition.",
-            image: "/electricity-ui.png",
+            image: "/electricity theft.thumb.png",
             demoMedia: "/electricity-ui.png",
             href: "https://github.com/SparkSidd",
             techStack: ["Python", "Streamlit", "Plotly", "Pandas", "Machine Learning"],
@@ -218,7 +218,7 @@ export const PROFILE = {
                 "Financial Recommendations"
             ],
             engineeringHighlights: "Spending Prediction, Financial Recommendations.",
-            image: "/mybudget-ui.png",
+            image: "/mybudgetai-thumb.png",
             demoMedia: "/mybudget-ui.png",
             href: "https://github.com/SparkSidd",
             techStack: ["React", "Python", "FastAPI", "Charts", "SQLite"],
@@ -240,7 +240,7 @@ export const PROFILE = {
                 "SHAP Explainability for verdicts"
             ],
             engineeringHighlights: "Anomaly Detection, Graph Analysis, SHAP Explainability.",
-            image: "/finguard-ui.png",
+            image: "/finguard.thumb.png",
             demoMedia: "/finguard-ui.png",
             href: "https://github.com/SparkSidd",
             techStack: ["React", "TypeScript", "Tailwind", "Cytoscape.js", "Recharts", "FastAPI", "SQLAlchemy", "PostgreSQL", "scikit-learn", "PyTorch", "NetworkX", "SHAP", "Docker"],
@@ -373,7 +373,7 @@ export const PROFILE = {
             ],
             engineeringHighlights: "Text Parsing, Table Classification.",
             image: "/Docfusion.thumb.png",
-            demoMedia: "/Docfusion.thumb.png",
+            demoMedia: "/docfusion.jpg",
             href: "https://github.com/SparkSidd",
             techStack: ["React", "TypeScript", "Tailwind", "FastAPI", "Recharts", "Document Parsing Libraries"],
             githubLink: "https://github.com/SparkSidd",
