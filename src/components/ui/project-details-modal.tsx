@@ -201,15 +201,23 @@ Source Code
 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10 lg:hidden pointer-events-none" />
 <ProjectVisualizer projectId={project.id} />
 {/* Optional Demo Media Renderer (Video or Image overlay) */}
-{/* Project Software UI Preview */}
+{/* Explanatory Project Media / Image Display */}
 <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-zinc-950/80 backdrop-blur-md pointer-events-auto">
-  <ProjectUIPreview 
-    id={project.id} 
-    title={project.title} 
-    category={project.category || "AI / ML"} 
-    techStack={project.techStack} 
-    howItWorks={project.howItWorks} 
-  />
+  {project.demoMedia ? (
+    <img 
+      src={project.demoMedia} 
+      alt={project.title} 
+      className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
+    />
+  ) : (
+    <ProjectUIPreview 
+      id={project.id} 
+      title={project.title} 
+      category={project.category || "AI / ML"} 
+      techStack={project.techStack} 
+      howItWorks={project.howItWorks} 
+    />
+  )}
 </div>
 {/* Stats overlay */}
 <div className="absolute bottom-6 left-6 right-6 z-30 hidden lg:flex items-center justify-between border-t border-white/10 pt-6">

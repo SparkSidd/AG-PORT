@@ -157,25 +157,17 @@ export function HoloProjectHub() {
             {/* Visualizer Theme overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10 pointer-events-none" />
             
-            {/* Project Cover Canvas Card */}
-            <div className="relative h-44 w-full overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#041209] via-[#020805] to-[#081a10] flex flex-col justify-between p-4">
-              <div className="flex items-center justify-between z-20">
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-mono text-emerald-400 uppercase tracking-wider">
-                  {project.category || "AI/ML"}
-                </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#22c55e]" />
+            {/* Project Cover Image Thumbnail */}
+            <div className="relative h-44 w-full overflow-hidden border-b border-white/10 bg-[#050f09]">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              />
+              <div className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded bg-black/80 border border-white/10 text-[9px] font-mono text-emerald-400 uppercase tracking-wider backdrop-blur-sm">
+                {project.category || "AI/ML"}
               </div>
-              <div className="z-20 space-y-1">
-                <h4 className="text-base font-extrabold text-white tracking-tight uppercase group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h4>
-                <p className="text-[11px] text-zinc-400 font-mono truncate">{project.tagline}</p>
-              </div>
-              {/* Subtle background grid pattern */}
-              <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
-                backgroundImage: "radial-gradient(circle, #10b981 1px, transparent 1px)",
-                backgroundSize: "20px 20px"
-              }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80" />
             </div>
 
             {/* Info details */}
