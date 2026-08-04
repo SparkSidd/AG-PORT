@@ -158,7 +158,7 @@ export function EducationDetailsModal({ isOpen, onClose }: EducationDetailsModal
                                     <div className="space-y-1">
                                         <p className="text-xs font-semibold text-emerald-300">Academic Leadership & Certifications</p>
                                         <p className="text-xs text-zinc-300 leading-relaxed font-light">
-                                            AI/ML Co-Lead at ENCODERS (Official Coding Club, SMIT). Certified in Cisco CCNA 1, 2, & 3 for Network Routing & Automation. Active participant and finalist across top collegiate hackathons.
+                                            AI/ML Co-Lead at ENCODERS (Coding Club, SMIT). Certified in Cisco CCNA 1, 2, & 3 for Network Routing & Automation. Active participant and finalist across top collegiate hackathons.
                                         </p>
                                     </div>
                                 </div>

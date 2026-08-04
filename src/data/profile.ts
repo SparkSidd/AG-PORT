@@ -85,10 +85,11 @@ export const PROFILE = {
         },
         {
             role: "AI/ML Co-Lead",
-            company: "Encoders (Official Coding Club, SMIT)",
+            company: "Encoders (Coding Club, SMIT)",
             period: "2024 – Present",
-            description: "Directing the AI/ML vertical of the university's largest technical club. Orchestrating workshops on Generative AI, Large Language Models, and Deep Learning for over 500+ students. Mentoring junior developers in hackathons, code reviews, and project deployment. Establishing best practices for model training and deployment within the community projects.",
-            tech: ["Leadership", "Mentoring", "GenAI", "Workshop Facilitation"]
+            description: "Co-leading the AI/ML vertical at the college coding club. Organizing workshops on machine learning, generative AI, and LLM basics for club members. Supporting peers with project guidance, code reviews, and hackathon prep.",
+            tech: ["Leadership", "Mentoring", "GenAI", "Workshop Facilitation"],
+            takeaway: "Co-lead the AI/ML vertical at Encoders Coding Club, SMIT — running workshops and mentoring peers on machine learning and generative AI fundamentals."
         },
         {
             role: "Chief Website Administrator",
