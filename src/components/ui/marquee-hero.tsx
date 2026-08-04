@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Download, Mail, FileText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Button } from "./button";
 import { Marquee } from "./marquee";
