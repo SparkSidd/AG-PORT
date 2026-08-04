@@ -79,15 +79,6 @@ function StatsMarquee() {
 }
 
 export function MarqueeHero() {
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.dispatchEvent(new CustomEvent("nav-goto-section", { detail: id }));
-    }
-  };
-
   return (
     <section className="relative flex min-h-screen w-full flex-col items-start justify-center pointer-events-auto overflow-hidden">
       
@@ -113,28 +104,25 @@ export function MarqueeHero() {
               <br />
               <span className="text-zinc-400 font-light">— that's the deal.</span>
             </h1>
-            
-            <div className="flex gap-3">
-              <button 
-                onClick={() => scrollToSection("projects")}
-                className="cursor-pointer"
-              >
-                <Button className="rounded-full py-3 px-5 overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all drop-shadow-[0_0_15px_rgba(52,211,153,0.4)] hover:drop-shadow-[0_0_20px_rgba(52,211,153,0.6)] group">
-                  <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
-                    <Code className="w-3.5 h-3.5 transition-transform group-hover:scale-110" /> View Projects
-                  </span>
-                </Button>
-              </button>
-              <button 
-                onClick={() => scrollToSection("skills")}
-                className="cursor-pointer"
-              >
-                <Button className="rounded-full py-3 px-5 overflow-hidden bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-md transition-all">
-                  <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
-                    <Layers className="w-3.5 h-3.5" /> Explore Stack
-                  </span>
-                </Button>
-              </button>
+
+            {/* Operator & System Metadata Grid — moved here to fill the button space */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-4 pt-4 border-t border-white/10 text-left max-w-md">
+                <div className="space-y-0.5">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Operator</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.name}</p>
+                </div>
+                <div className="space-y-0.5">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Base</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.location}</p>
+                </div>
+                <div className="space-y-0.5">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Primary Focus</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate">{PROFILE.role.split('|')[0].trim()}</p>
+                </div>
+                <div className="space-y-0.5">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Education</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate" title={PROFILE.education[0].degree}>B.Tech CSE</p>
+                </div>
             </div>
           </div>
 
@@ -191,25 +179,6 @@ export function MarqueeHero() {
                   );
               })}
             </motion.div>
-            
-            <div className="grid grid-cols-2 gap-x-3 gap-y-4 pt-4 border-t border-white/10 text-center lg:text-left">
-                <div className="space-y-0.5 lg:ml-auto">
-                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Operator</p>
-                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.name}</p>
-                </div>
-                <div className="space-y-0.5 lg:ml-auto">
-                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Base</p>
-                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.location}</p>
-                </div>
-                <div className="space-y-0.5 lg:ml-auto">
-                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Primary Focus</p>
-                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate">{PROFILE.role.split('|')[0].trim()}</p>
-                </div>
-                <div className="space-y-0.5 lg:ml-auto">
-                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Education</p>
-                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate" title={PROFILE.education[0].degree}>B.Tech CSE</p>
-                </div>
-            </div>
           </div>
         </div>
       </div>
