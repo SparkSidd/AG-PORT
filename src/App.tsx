@@ -184,9 +184,6 @@ function App() {
             <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer">
               <MicroExpander text="LinkedIn" icon={<Linkedin className="w-4 h-4" />} variant="ghost" className="text-emerald-400 hover:bg-emerald-950/40 hover:text-emerald-300 border border-emerald-500/20" />
             </a>
-            <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer">
-              <MicroExpander text="Resume" icon={<FileText className="w-4 h-4" />} variant="default" className="bg-emerald-600 hover:bg-emerald-500 text-white border-none" />
-            </a>
             <a href="/sid CV.pdf" target="_blank" rel="noopener noreferrer">
               <MicroExpander text="CV" icon={<FileText className="w-4 h-4" />} variant="outline" className="text-emerald-400 border-emerald-500/40 hover:bg-emerald-950/40" />
             </a>
@@ -347,13 +344,6 @@ function App() {
       {/* Desktop Global Recruiter Action Bar */}
       <div className={`fixed top-4 left-4 md:top-6 md:left-8 z-[9999] pointer-events-auto hidden md:flex items-center gap-2 transition-all duration-1000 ${showSplash ? 'opacity-0 translate-y-[-20px]' : 'opacity-100 translate-y-0'}`}>
         <a 
-          href={`mailto:${PROFILE.email}`}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 transition-all group shadow-[0_0_15px_rgba(16,185,129,0.15)]"
-        >
-          <Mail className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-emerald-50">Hire Me</span>
-        </a>
-        <a 
           href="/sid resume.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
@@ -361,6 +351,15 @@ function App() {
         >
           <FileText className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
           <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-emerald-50">Resume</span>
+        </a>
+        <a 
+          href="/sid CV.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-white transition-all group"
+        >
+          <FileText className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-zinc-200">CV</span>
         </a>
       </div>
 

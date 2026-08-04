@@ -111,17 +111,17 @@ export function MarqueeHero() {
             </h1>
             
             <div className="flex gap-3">
-              <a href={`mailto:${PROFILE.email}`}>
+              <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-full py-3 px-5 overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all drop-shadow-[0_0_15px_rgba(52,211,153,0.4)] hover:drop-shadow-[0_0_20px_rgba(52,211,153,0.6)] group">
                   <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 transition-transform group-hover:scale-110" /> Contact Agent
+                    <Download className="w-3.5 h-3.5 transition-transform group-hover:scale-110" /> Resume
                   </span>
                 </Button>
               </a>
-              <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/sid CV.pdf" target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-full py-3 px-5 overflow-hidden bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-md transition-all">
                   <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
-                    <Download className="w-3.5 h-3.5" /> Resume
+                    <FileText className="w-3.5 h-3.5" /> CV
                   </span>
                 </Button>
               </a>
