@@ -21,10 +21,9 @@ export function MusicPlayer() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        // Attempt to auto-play after interaction or if allowed
-        // Note: Most browsers block auto-play without interaction
         if (audioRef.current) {
             audioRef.current.volume = 0.4; // Set initial volume to 40%
+            audioRef.current.currentTime = 10; // Start song from 10 seconds
         }
     }, []);
 
@@ -32,6 +31,9 @@ export function MusicPlayer() {
         if (!audioRef.current) return;
         
         if (isPlaying) {
+            if (audioRef.current.currentTime < 10) {
+                audioRef.current.currentTime = 10;
+            }
             const playPromise = audioRef.current.play();
             if (playPromise !== undefined) {
                 playPromise.catch((error) => {
@@ -48,6 +50,13 @@ export function MusicPlayer() {
         if (audioRef.current) {
             audioRef.current.muted = !isMuted;
             setIsMuted(!isMuted);
+        }
+    };
+
+    const handleEnded = () => {
+        if (audioRef.current) {
+            audioRef.current.currentTime = 10;
+            audioRef.current.play().catch(() => {});
         }
     };
 
@@ -98,8 +107,8 @@ export function MusicPlayer() {
             <audio
                 ref={audioRef}
                 src="/freedom.mp3"
-                loop
-                onEnded={() => setPlaying(false)}
+                onEnded={handleEnded}
+                preload="auto"
             />
 
             <style dangerouslySetInnerHTML={{
