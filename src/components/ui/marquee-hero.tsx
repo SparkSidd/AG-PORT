@@ -139,7 +139,7 @@ export function MarqueeHero() {
                 initial="hidden"
                 animate="show"
             >
-              {PROFILE.biography.split('\n\n')[0].split(' ').map((word, i) => {
+              {PROFILE.biography.split('\n\n').slice(0, 2).join(' ').split(' ').map((word, i) => {
                   const cleanWord = word.replace(/[^a-zA-Z0-9-]/g, '');
                   const keywords = [
                       'applications', 'security', 'models', 'boundaries', 'development', 'cybersecurity', 'AI/ML',
