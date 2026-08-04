@@ -90,7 +90,7 @@ Handle playfully:
 
 BASIC INFO:
 Name: Siddharth Kumar | Location: Sikkim, India | Email: siddharth.sk324@gmail.com
-GitHub: https://github.com/SparkSidd | LinkedIn: https://www.linkedin.com/in/siddharth-kumar472
+GitHub: https://github.com/SparkSidd | LinkedIn: https://www.linkedin.com/in/sparksidd/
 Role: Full Stack Developer | AI/ML Engineer
 
 EDUCATION:

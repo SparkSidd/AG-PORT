@@ -5,7 +5,7 @@ export const PROFILE = {
     email: "siddharth.sk324@gmail.com",
     socials: {
         github: "https://github.com/SparkSidd",
-        linkedin: "https://www.linkedin.com/in/siddharth-kumar472",
+        linkedin: "https://www.linkedin.com/in/sparksidd/",
     },
     biography: "I don't stick to one lane because the best solutions rarely do either. Whether I'm building applications, hardening security systems, or training machine learning models, I'm drawn to challenges that require crossing traditional boundaries. My background spans development, cybersecurity, and AI/ML—not because I couldn't choose, but because modern problems demand fluency across all three.\n\nI believe the best work happens at the intersections. A developer who understands security writes more resilient code. A security professional who grasps AI can anticipate emerging threats. An ML engineer who thinks like a developer ships models that actually work in production.\n\nWhen I'm not coding, I'm working on myself—reading, training, or playing sports. Growth isn't just technical; it's mental and physical too.\n\nCurrently open to opportunities where versatility isn't just valued—it's essential.",
     skills: [
