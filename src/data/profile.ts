@@ -95,7 +95,7 @@ export const PROFILE = {
             role: "Chief Website Administrator",
             company: "SMITMUN (Model United Nations)",
             period: "January 2026 – Present",
-            description: "Lead administrator for the official conference website, managing delegate registrations and committee allocations. Optimized server performance to handle concurrent traffic spikes during registration phases and implemented secure payment gateway integrations.",
+            description: "Served as the Chief Website Administrator for SMITMUN.",
             tech: ["Web Administration", "Security", "Database Management"]
         },
         {
