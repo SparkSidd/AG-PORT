@@ -7,7 +7,7 @@ export const PROFILE = {
         github: "https://github.com/SparkSidd",
         linkedin: "https://www.linkedin.com/in/sparksidd/",
     },
-    biography: "I don't stick to one lane because the best solutions rarely do either. Whether I'm building applications, hardening security systems, or training machine learning models, I'm drawn to challenges that require crossing traditional boundaries. My background spans development, cybersecurity, and AI/ML—not because I couldn't choose, but because modern problems demand fluency across all three.\n\nI believe the best work happens at the intersections. A developer who understands security writes more resilient code. A security professional who grasps AI can anticipate emerging threats. An ML engineer who thinks like a developer ships models that actually work in production.\n\nWhen I'm not coding, I'm working on myself—reading, training, or playing sports. Growth isn't just technical; it's mental and physical too.\n\nCurrently open to opportunities where versatility isn't just valued—it's essential.",
+    biography: "I build software at the intersections of Full-Stack Architecture, Cybersecurity, and AI/ML. Rather than confining myself to a single layer, I solve problems that require fluency across web interfaces, resilient backends, and machine learning models.\n\nI believe high-impact engineering happens when disciplines meet — a developer who understands security writes safer code, and an AI engineer who thinks in production ships models that scale.",
     skills: [
         // -- Frontend
         { name: "React / Next.js", icon: "atom", description: "Frontend Architecture", category: "Frontend" },

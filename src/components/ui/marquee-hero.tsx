@@ -139,44 +139,50 @@ export function MarqueeHero() {
                 initial="hidden"
                 animate="show"
             >
-              {PROFILE.biography.split('\n\n').slice(0, 2).join(' ').split(' ').map((word, i) => {
-                  const cleanWord = word.replace(/[^a-zA-Z0-9-]/g, '');
-                  const keywords = [
-                      'applications', 'security', 'models', 'boundaries', 'development', 'cybersecurity', 'AI/ML',
-                      'resilient', 'threats', 'production', 'versatility', 'intersections'
-                  ];
-                  const isKeyword = keywords.some(k => cleanWord.toLowerCase().includes(k.toLowerCase()));
+              {PROFILE.biography.split('\n\n').map((para, pIdx) => {
+                const keywords = [
+                  'applications', 'security', 'models', 'boundaries', 'development', 'cybersecurity', 'AI/ML',
+                  'resilient', 'threats', 'production', 'versatility', 'intersections', 'architecture', 'interfaces', 'backends', 'scale'
+                ];
+                return (
+                  <p key={pIdx} className="mb-4 last:mb-0">
+                    {para.split(' ').map((word, i) => {
+                      const cleanWord = word.replace(/[^a-zA-Z0-9-]/g, '');
+                      const isKeyword = keywords.some(k => cleanWord.toLowerCase().includes(k.toLowerCase()));
 
-                  if (isKeyword) {
-                      return (
+                      if (isKeyword) {
+                        return (
                           <span key={i}>
-                              <motion.span 
-                                  variants={{
-                                      hidden: { opacity: 0, y: 12 },
-                                      show: { opacity: 1, y: 0 },
-                                  }}
-                                  className="inline-block font-bold text-white"
-                              >
-                                  <HoverLinkAnimation highlightColor="#0d0d0d" className="text-[#22c55e]">
-                                      {word}
-                                  </HoverLinkAnimation>
-                              </motion.span>{' '}
-                          </span>
-                      );
-                  }
-                  return (
-                      <span key={i}>
-                          <motion.span 
+                            <motion.span 
                               variants={{
-                                  hidden: { opacity: 0, y: 12 },
-                                  show: { opacity: 1, y: 0 },
+                                hidden: { opacity: 0, y: 12 },
+                                show: { opacity: 1, y: 0 },
                               }}
-                              className="inline-block"
+                              className="inline-block font-bold text-white"
+                            >
+                              <HoverLinkAnimation highlightColor="#0d0d0d" className="text-[#22c55e]">
+                                {word}
+                              </HoverLinkAnimation>
+                            </motion.span>{' '}
+                          </span>
+                        );
+                      }
+                      return (
+                        <span key={i}>
+                          <motion.span 
+                            variants={{
+                              hidden: { opacity: 0, y: 12 },
+                              show: { opacity: 1, y: 0 },
+                            }}
+                            className="inline-block"
                           >
-                              {word}
+                            {word}
                           </motion.span>{' '}
-                      </span>
-                  );
+                        </span>
+                      );
+                    })}
+                  </p>
+                );
               })}
             </motion.div>
           </div>
