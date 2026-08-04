@@ -222,6 +222,7 @@ function App() {
   ];
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isPage6Visible, setIsPage6Visible] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -237,6 +238,21 @@ function App() {
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    const contactEl = document.getElementById("contact");
+    if (!contactEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPage6Visible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(contactEl);
+    return () => observer.disconnect();
+  }, [showSplash]);
 
   return (
     <div className="relative min-h-screen bg-black text-white font-sans selection:bg-purple-500/30">
@@ -335,6 +351,9 @@ function App() {
                 <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-zinc-400 hover:text-white">
                   RESUME
                 </a>
+                <a href="/sid CV.pdf" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-zinc-400 hover:text-white">
+                  CV
+                </a>
               </div>
             </div>
           </motion.div>
@@ -342,7 +361,7 @@ function App() {
       </AnimatePresence>
 
       {/* Desktop Global Recruiter Action Bar */}
-      <div className={`fixed top-4 left-4 md:top-6 md:left-8 z-[9999] pointer-events-auto hidden md:flex items-center gap-2 transition-all duration-1000 ${showSplash ? 'opacity-0 translate-y-[-20px]' : 'opacity-100 translate-y-0'}`}>
+      <div className={`fixed top-4 left-4 md:top-6 md:left-8 z-[9999] hidden md:flex items-center gap-2 transition-all duration-500 ${showSplash || isPage6Visible ? 'opacity-0 pointer-events-none translate-y-[-20px]' : 'opacity-100 pointer-events-auto translate-y-0'}`}>
         <a 
           href="/sid resume.pdf" 
           target="_blank" 
