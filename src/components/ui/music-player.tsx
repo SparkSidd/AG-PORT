@@ -72,26 +72,26 @@ export function MusicPlayer() {
                 ))}
             </div>
 
-            <div className="flex items-center bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-3 py-1.5 gap-3 hover:bg-black/70 transition-colors">
+            <div className="flex items-center bg-black/50 backdrop-blur-md border border-white/10 rounded-full px-2.5 py-1 gap-2 hover:bg-black/70 transition-colors">
                 <button
                     onClick={togglePlay}
-                    className="text-white hover:text-green-400 transition-colors flex items-center gap-2"
+                    className="text-white hover:text-green-400 transition-colors flex items-center gap-1.5"
                     aria-label={isPlaying ? "Pause Music" : "Play Music"}
                 >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                    <span className="text-xs font-mono hidden md:inline-block">
+                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                    <span className="text-[10px] font-mono font-bold tracking-wider hidden md:inline-block">
                         {isPlaying ? "PLAYING" : "PAUSED"}
                     </span>
                 </button>
 
-                <div className="w-px h-4 bg-white/20" />
+                <div className="w-px h-3 bg-white/20" />
 
                 <button
                     onClick={toggleMute}
                     className="text-gray-400 hover:text-white transition-colors"
                     aria-label={isMuted ? "Unmute" : "Mute"}
                 >
-                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                 </button>
             </div>
 

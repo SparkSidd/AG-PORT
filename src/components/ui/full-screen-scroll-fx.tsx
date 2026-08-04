@@ -630,26 +630,28 @@ export const FullScreenScrollFX = forwardRef<any, FullScreenFXProps>(
 
           .fx-item {
             color: var(--fx-text);
-            font-weight: 800;
-            letter-spacing: 0em;
+            font-weight: 700;
+            font-family: monospace;
+            letter-spacing: 0.15em;
             line-height: 1;
-            margin: calc(var(--fx-row-gap) / 2) 0;
-            opacity: 0.35;
+            margin: calc(var(--fx-row-gap) / 2.5) 0;
+            opacity: 0.25;
             transition: opacity 0.3s ease, transform 0.3s ease;
             position: relative;
-            font-size: clamp(1rem, 2.4vw, 1.8rem);
+            font-size: clamp(0.7rem, 1.1vw, 1.05rem);
             user-select: none;
             cursor: pointer;
           }
-          .fx-left-item.active, .fx-right-item.active { opacity: 1; }
-          .fx-left-item.active { transform: translateX(10px); padding-left: 16px; }
-          .fx-right-item.active { transform: translateX(-10px); padding-right: 16px; }
+          .fx-left-item.active, .fx-right-item.active { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+          .fx-left-item.active { transform: translateX(8px); padding-left: 14px; }
+          .fx-right-item.active { transform: translateX(-8px); padding-right: 14px; }
 
           .fx-left-item.active::before,
           .fx-right-item.active::after {
             content: "";
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 6px; height: 6px; background: var(--fx-text); border-radius: 50%;
+            width: 4px; height: 4px; background: var(--fx-text); border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255,255,255,0.8);
           }
           .fx-left-item.active::before { left: 0; }
           .fx-right-item.active::after { right: 0; }
@@ -664,18 +666,18 @@ export const FullScreenScrollFX = forwardRef<any, FullScreenFXProps>(
           .fx-featured-title {
             margin: 0; color: var(--fx-text);
             font-weight: 900; letter-spacing: -0.01em;
-            font-size: clamp(2rem, 7.5vw, 6rem);
+            font-size: clamp(1.8rem, 5vw, 4rem);
           }
           .fx-word-mask { display: inline-block; overflow: hidden; vertical-align: middle; }
           .fx-word { display: inline-block; vertical-align: middle; }
 
           .fx-footer {
-            grid-column: 1 / 13; align-self: end; padding-bottom: 5vh; text-align: center;
+            grid-column: 1 / 13; align-self: end; padding-bottom: 4vh; text-align: center;
           }
-          .fx-footer-title { color: var(--fx-text); font-size: clamp(1.6rem, 7vw, 7rem); font-weight: 900; letter-spacing: -0.01em; line-height: 0.9; }
-          .fx-progress { width: 200px; height: 2px; margin: 1rem auto 0; background: rgba(245,245,245,0.28); position: relative; }
+          .fx-footer-title { color: var(--fx-text); font-size: clamp(1.4rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -0.01em; line-height: 0.9; }
+          .fx-progress { width: 140px; height: 2px; margin: 0.75rem auto 0; background: rgba(245,245,245,0.25); position: relative; }
           .fx-progress-fill { position: absolute; inset: 0 auto 0 0; width: 0%; background: var(--fx-text); height: 100%; transition: width 0.3s ease; }
-          .fx-progress-numbers { position: absolute; inset: auto 0 100% 0; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--fx-text); }
+          .fx-progress-numbers { position: absolute; inset: auto 0 100% 0; display: flex; justify-content: space-between; font-size: 0.7rem; font-family: monospace; color: var(--fx-text); opacity: 0.6; }
 
           .fx-end { height: 100vh; display: grid; place-items: center; background: var(--fx-page-bg); color: var(--fx-text); }
           .fx-fin { transform: rotate(90deg); color: var(--fx-text); font-size: 2rem; font-weight: bold; }

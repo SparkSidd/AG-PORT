@@ -119,7 +119,8 @@ const CyclingRoles: React.FC = () => {
     return (
         <div
             ref={elementRef}
-            className="text-[#00ff00] text-3xl md:text-4xl font-mono font-bold tracking-widest mt-4 h-12"
+            className="text-[#00ff00] font-mono font-bold tracking-[0.22em] mt-2 h-8 sm:h-10 flex items-center justify-center drop-shadow-[0_0_10px_rgba(0,255,0,0.5)]"
+            style={{ fontSize: 'clamp(0.85rem, 1.8vw, 1.25rem)' }}
         >
             FULL STACK DEV
         </div>
@@ -190,12 +191,16 @@ const RainingLetters: React.FC = () => {
     }, [])
 
     return (
-        <div className="relative w-full h-screen bg-transparent overflow-hidden">
-            {/* Title */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center w-full">
+        <div className="relative w-full h-screen bg-transparent overflow-hidden flex items-center justify-center select-none">
+            {/* Title & Roles */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center w-full px-4 max-w-3xl pointer-events-auto">
                 <h1
-                    className="text-white text-5xl md:text-7xl font-bold tracking-wider mb-8"
-                    style={{ fontFamily: 'monospace', textShadow: '0 0 10px rgba(255,255,255,0.5)' }}
+                    className="text-white font-bold tracking-[0.18em] mb-1 sm:mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                    style={{
+                        fontFamily: 'monospace',
+                        fontSize: 'clamp(1.5rem, 3.2vw, 2.75rem)',
+                        lineHeight: 1.2
+                    }}
                 >
                     SIDDHARTH KUMAR
                 </h1>
@@ -206,21 +211,21 @@ const RainingLetters: React.FC = () => {
             {characters.map((char, index) => (
                 <span
                     key={index}
-                    className={`absolute text-xs transition-colors duration-100 ${activeIndices.has(index)
-                        ? "text-[#00ff00] text-base scale-125 z-10 font-bold animate-pulse"
+                    className={`absolute transition-colors duration-100 pointer-events-none select-none ${activeIndices.has(index)
+                        ? "text-[#00ff00] font-bold z-10 scale-110"
                         : "text-slate-600 font-light"
                         }`}
                     style={{
                         left: `${char.x}%`,
                         top: `${char.y}%`,
-                        transform: `translate(-50%, -50%) ${activeIndices.has(index) ? 'scale(1.25)' : 'scale(1)'}`,
+                        transform: `translate(-50%, -50%) ${activeIndices.has(index) ? 'scale(1.15)' : 'scale(1)'}`,
                         textShadow: activeIndices.has(index)
                             ? '0 0 8px rgba(0,255,0,0.8), 0 0 12px rgba(0,255,0,0.4)'
                             : 'none',
-                        opacity: activeIndices.has(index) ? 1 : 0.4,
+                        opacity: activeIndices.has(index) ? 1 : 0.45,
                         transition: 'color 0.1s, transform 0.1s, text-shadow 0.1s',
                         willChange: 'transform, top',
-                        fontSize: '1.8rem'
+                        fontSize: activeIndices.has(index) ? '1.1rem' : '0.85rem'
                     }}
                 >
                     {char.char}
@@ -230,7 +235,8 @@ const RainingLetters: React.FC = () => {
             <style>{`
         .dud {
           color: #0f0;
-          opacity: 0.7;
+          opacity: 0.8;
+          text-shadow: 0 0 6px rgba(0,255,0,0.6);
         }
       `}</style>
         </div>

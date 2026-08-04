@@ -36,20 +36,20 @@ const stats = [
 
 function AvatarStack() {
   return (
-    <div className="flex -space-x-4">
+    <div className="flex -space-x-3 items-center">
       {rolesAvatars.map((role, i) => (
         <Avatar
-          className="w-14 h-14 border-2 border-emerald-500 bg-zinc-900"
+          className="w-10 h-10 border-2 border-emerald-500 bg-zinc-900 shadow-md"
           key={role.initials}
           style={{ zIndex: rolesAvatars.length - i }}
         >
           <AvatarImage alt={`Role ${role.initials}`} src={role.src} />
-          <AvatarFallback className="bg-zinc-800 text-emerald-400 text-[10px] font-bold font-mono">
+          <AvatarFallback className="bg-zinc-800 text-emerald-400 text-[9px] font-bold font-mono">
             {role.initials}
           </AvatarFallback>
         </Avatar>
       ))}
-      <div className="flex items-center justify-center pl-6 pr-4 py-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-xs font-mono text-zinc-400">
+      <div className="flex items-center justify-center pl-4 pr-3 py-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[11px] font-mono text-zinc-400">
          MULTIFACETED.
       </div>
     </div>
@@ -58,24 +58,24 @@ function AvatarStack() {
 
 function StatsMarquee() {
   return (
-    <div className="w-full max-w-4xl border-y border-white/10 bg-black/20 backdrop-blur-md relative z-20">
+    <div className="w-full max-w-3xl border-y border-white/10 bg-black/20 backdrop-blur-md relative z-20">
       <Marquee
-        className="py-3 sm:py-4 [--duration:40s] [--gap:3rem]"
+        className="py-2 [--duration:40s] [--gap:2.5rem]"
         pauseOnHover
         repeat={4}
       >
         {stats.map((stat) => (
           <div
-            className="flex items-center gap-3 whitespace-nowrap"
+            className="flex items-center gap-2.5 whitespace-nowrap"
             key={stat.label}
           >
-            <span className="font-bold font-mono text-emerald-400 text-sm sm:text-base tracking-wide drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]">
+            <span className="font-bold font-mono text-emerald-400 text-xs sm:text-sm tracking-wide drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">
               {stat.value}
             </span>
-            <span className="font-medium font-mono text-[10px] sm:text-xs text-zinc-400 uppercase tracking-[0.2em]">
+            <span className="font-medium font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-[0.18em]">
               {stat.label}
             </span>
-            <span className="text-base sm:text-lg">{stat.emoji}</span>
+            <span className="text-sm">{stat.emoji}</span>
           </div>
         ))}
       </Marquee>
@@ -90,44 +90,47 @@ export function MarqueeHero() {
       {/* Fallback internal gradient blending if App.tsx background is not fully opaque */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/40 to-transparent z-0 pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pb-4 md:pb-6">
-        <div className="space-y-4 md:space-y-6">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pb-3 md:pb-4">
+        <div className="space-y-3 md:space-y-4">
           <AvatarStack />
           <StatsMarquee />
         </div>
       </div>
       
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pb-6 sm:pb-8">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="w-full space-y-8 lg:w-3/5">
-            <h1 className="font-medium text-5xl text-white leading-[1.1] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pb-6 sm:pb-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="w-full space-y-6 lg:w-3/5">
+            <h1
+              className="font-medium text-white leading-[1.15] tracking-tight"
+              style={{ fontSize: 'clamp(1.75rem, 3.8vw, 3.5rem)' }}
+            >
               I <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]">architect</span>, you{" "}
               <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]">succeed</span>
               <br />
               <span className="text-zinc-400 font-light">— that's the deal.</span>
             </h1>
             
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <a href={`mailto:${PROFILE.email}`}>
-                <Button className="rounded-full py-6 px-6 overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all drop-shadow-[0_0_15px_rgba(52,211,153,0.5)] hover:drop-shadow-[0_0_25px_rgba(52,211,153,0.7)] group">
-                  <span className="font-mono uppercase tracking-widest text-xs flex items-center gap-2">
-                    <Mail className="w-4 h-4 transition-transform group-hover:scale-110" /> Contact Agent
+                <Button className="rounded-full py-3 px-5 overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all drop-shadow-[0_0_15px_rgba(52,211,153,0.4)] hover:drop-shadow-[0_0_20px_rgba(52,211,153,0.6)] group">
+                  <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
+                    <Mail className="w-3.5 h-3.5 transition-transform group-hover:scale-110" /> Contact Agent
                   </span>
                 </Button>
               </a>
               <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer">
-                <Button className="rounded-full py-6 px-6 overflow-hidden bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-md transition-all">
-                  <span className="font-mono uppercase tracking-widest text-xs flex items-center gap-2">
-                    <Download className="w-4 h-4" /> Resume
+                <Button className="rounded-full py-3 px-5 overflow-hidden bg-white/5 hover:bg-white/10 text-white border border-white/10 backdrop-blur-md transition-all">
+                  <span className="font-mono uppercase tracking-widest text-[11px] flex items-center gap-2">
+                    <Download className="w-3.5 h-3.5" /> Resume
                   </span>
                 </Button>
               </a>
             </div>
           </div>
 
-          <div className="w-full lg:w-2/5 flex flex-col gap-8 justify-center">
+          <div className="w-full lg:w-2/5 flex flex-col gap-6 justify-center">
             <motion.div 
-                className="text-base sm:text-lg text-zinc-300 font-mono uppercase tracking-wide leading-relaxed text-center text-pretty drop-shadow-md"
+                className="text-xs sm:text-sm text-zinc-300 font-mono uppercase tracking-wide leading-relaxed text-center lg:text-left text-pretty drop-shadow-md"
                 variants={{
                     hidden: { opacity: 0 },
                     show: {
@@ -179,22 +182,22 @@ export function MarqueeHero() {
               })}
             </motion.div>
             
-            <div className="grid grid-cols-2 gap-x-4 gap-y-6 pt-6 border-t border-white/10 text-center lg:text-left">
-                <div className="space-y-1 lg:ml-auto">
-                    <p className="text-[10px] sm:text-xs text-zinc-500 font-mono uppercase tracking-[0.2em]">Operator</p>
-                    <p className="text-sm md:text-base font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.name}</p>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-4 pt-4 border-t border-white/10 text-center lg:text-left">
+                <div className="space-y-0.5 lg:ml-auto">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Operator</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.name}</p>
                 </div>
-                <div className="space-y-1 lg:ml-auto">
-                    <p className="text-[10px] sm:text-xs text-zinc-500 font-mono uppercase tracking-[0.2em]">Base</p>
-                    <p className="text-sm md:text-base font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.location}</p>
+                <div className="space-y-0.5 lg:ml-auto">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Base</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase">{PROFILE.location}</p>
                 </div>
-                <div className="space-y-1 lg:ml-auto">
-                    <p className="text-[10px] sm:text-xs text-zinc-500 font-mono uppercase tracking-[0.2em]">Primary Focus</p>
-                    <p className="text-sm md:text-base font-bold text-white tracking-widest drop-shadow-md uppercase truncate">{PROFILE.role.split('|')[0].trim()}</p>
+                <div className="space-y-0.5 lg:ml-auto">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Primary Focus</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate">{PROFILE.role.split('|')[0].trim()}</p>
                 </div>
-                <div className="space-y-1 lg:ml-auto">
-                    <p className="text-[10px] sm:text-xs text-zinc-500 font-mono uppercase tracking-[0.2em]">Education</p>
-                    <p className="text-sm md:text-base font-bold text-white tracking-widest drop-shadow-md uppercase truncate" title={PROFILE.education[0].degree}>B.Tech CSE</p>
+                <div className="space-y-0.5 lg:ml-auto">
+                    <p className="text-[9px] sm:text-[10px] text-zinc-500 font-mono uppercase tracking-[0.18em]">Education</p>
+                    <p className="text-xs md:text-sm font-bold text-white tracking-widest drop-shadow-md uppercase truncate" title={PROFILE.education[0].degree}>B.Tech CSE</p>
                 </div>
             </div>
           </div>

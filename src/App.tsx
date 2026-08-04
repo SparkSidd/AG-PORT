@@ -16,6 +16,8 @@ import { InfiniteBentoPanBackground } from "@/components/ui/infinite-bento-pan-b
 
 
 
+import { SidBotChat } from "@/components/ui/sidbot-chat";
+
 // Lazy load heavy components
 const NeonCrystalCity = lazy(() => import("@/components/ui/neon-crystal-city"));
 const HoloProjectHub = lazy(() => import("@/components/ui/holo-project-hub").then(module => ({ default: module.HoloProjectHub })));
@@ -166,31 +168,32 @@ function App() {
       leftLabel: "Touch",
       rightLabel: "End",
       title: (
-        <div className="flex flex-col items-center justify-center space-y-8 pointer-events-auto">
-          <div className="w-full max-w-2xl px-4">
+        <div className="w-full max-w-4xl mx-auto px-6 md:px-12 flex flex-col items-center justify-center space-y-4 md:space-y-5 pointer-events-auto pt-14 pb-4 h-full">
+          <div className="w-full max-w-2xl px-2">
             <ContactSection />
+            <SidBotChat />
           </div>
 
-          <div className="flex flex-wrap gap-4 items-center justify-center">
+          <div className="flex flex-wrap gap-2.5 sm:gap-3 items-center justify-center pt-1">
             <a href={`mailto:${PROFILE.email}`}>
-              <MicroExpander text="Email Me" icon={<Mail className="w-5 h-5" />} />
+              <MicroExpander text="Email Me" icon={<Mail className="w-4 h-4" />} />
             </a>
             <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer">
-              <MicroExpander text="GitHub" icon={<Github className="w-5 h-5" />} variant="outline" className="text-white border-white hover:bg-white hover:text-black" />
+              <MicroExpander text="GitHub" icon={<Github className="w-4 h-4" />} variant="outline" className="text-white border-white/20 hover:bg-white hover:text-black" />
             </a>
             <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer">
-              <MicroExpander text="LinkedIn" icon={<Linkedin className="w-5 h-5" />} variant="ghost" className="text-green-400 hover:bg-green-900/20 hover:text-green-300" />
+              <MicroExpander text="LinkedIn" icon={<Linkedin className="w-4 h-4" />} variant="ghost" className="text-emerald-400 hover:bg-emerald-950/40 hover:text-emerald-300 border border-emerald-500/20" />
             </a>
             <a href="/sid resume.pdf" target="_blank" rel="noopener noreferrer">
-              <MicroExpander text="Resume" icon={<FileText className="w-5 h-5" />} variant="default" className="bg-green-600 hover:bg-green-700 text-white border-none" />
+              <MicroExpander text="Resume" icon={<FileText className="w-4 h-4" />} variant="default" className="bg-emerald-600 hover:bg-emerald-500 text-white border-none" />
             </a>
             <a href="/sid CV.pdf" target="_blank" rel="noopener noreferrer">
-              <MicroExpander text="CV" icon={<FileText className="w-5 h-5" />} variant="outline" className="text-green-400 border-green-500 hover:bg-green-900/20" />
+              <MicroExpander text="CV" icon={<FileText className="w-4 h-4" />} variant="outline" className="text-emerald-400 border-emerald-500/40 hover:bg-emerald-950/40" />
             </a>
           </div>
-          <div className="text-center text-gray-500 mt-4">
-            <p>{PROFILE.location}</p>
-            <p>&copy; {new Date().getFullYear()} Siddharth Kumar. Crafted with <Heart className="inline w-4 h-4 text-red-500 mx-1" /> and lots of <Coffee className="inline w-4 h-4 text-amber-500 mx-1" /></p>
+          <div className="text-center text-zinc-400 text-xs pt-1 space-y-0.5 font-mono">
+            <p className="text-[11px] text-zinc-400 uppercase tracking-widest">{PROFILE.location}</p>
+            <p className="text-[10px] text-zinc-400">&copy; {new Date().getFullYear()} Siddharth Kumar. Crafted with <Heart className="inline w-3 h-3 text-red-500 mx-0.5" /> & <Coffee className="inline w-3 h-3 text-amber-500 mx-0.5" /></p>
           </div>
         </div>
       ),
@@ -342,22 +345,22 @@ function App() {
       </AnimatePresence>
 
       {/* Desktop Global Recruiter Action Bar */}
-      <div className={`fixed top-6 left-6 md:top-8 md:left-12 z-[9999] pointer-events-auto hidden md:flex items-center gap-3 transition-all duration-1000 ${showSplash ? 'opacity-0 translate-y-[-20px]' : 'opacity-100 translate-y-0'}`}>
+      <div className={`fixed top-4 left-4 md:top-6 md:left-8 z-[9999] pointer-events-auto hidden md:flex items-center gap-2 transition-all duration-1000 ${showSplash ? 'opacity-0 translate-y-[-20px]' : 'opacity-100 translate-y-0'}`}>
         <a 
           href={`mailto:${PROFILE.email}`}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 transition-all group shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 transition-all group shadow-[0_0_15px_rgba(16,185,129,0.15)]"
         >
-          <Mail className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-          <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-emerald-50">Hire Me</span>
+          <Mail className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-emerald-50">Hire Me</span>
         </a>
         <a 
           href="/sid resume.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 transition-all group shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 transition-all group shadow-[0_0_15px_rgba(16,185,129,0.15)]"
         >
-          <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
-          <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-emerald-50">Resume</span>
+          <FileText className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-emerald-50">Resume</span>
         </a>
       </div>
 
