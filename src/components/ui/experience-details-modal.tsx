@@ -20,8 +20,8 @@ function getTakeaway(role: string, company: string): string {
     const r = role.toLowerCase()
     if (r.includes("mobile")) return `Gained real-world experience shipping a production mobile app at ${company}, bridging web and native platforms using Flutter & Dart.`
     if (r.includes("intern") && r.includes("it")) return `Delivered measurable impact — the anomaly detection dashboard at ${company} cut manual inspection work by 60%, turning raw data into clear, actionable insights.`
-    if (r.includes("ai") || r.includes("ml")) return `Co-leading the AI/ML vertical at Encoders Coding Club, SMIT — running workshops and mentoring peers on machine learning and generative AI fundamentals.`
-    if (r.includes("admin") || r.includes("website")) return `Served as the Chief Website Administrator for SMITMUN.`
+    if (r.includes("ai") || r.includes("ml") || company.toLowerCase().includes("encoders")) return `Co-leading the AI/ML vertical at Encoders Coding Club, SMIT — running workshops and mentoring peers on machine learning and generative AI fundamentals.`
+    if (company.toLowerCase().includes("brain")) return `Developing intelligent web applications, AI tools, and full-stack solutions at Brain Up Labs.`
     if (r.includes("hackathon") || r.includes("technical")) return `Led cross-functional teams to finalist positions at multiple national hackathons including SIH and InnoFusion, building full-stack MVPs under tight constraints.`
     return `Made a meaningful contribution at ${company} by applying technical skills across real-world problems and shipping solutions that matter.`
 }

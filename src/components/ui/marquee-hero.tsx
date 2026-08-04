@@ -12,22 +12,25 @@ const companyLogos = [
   {
     name: "Aibi Technologies — Mobile Dev Intern",
     short: "AIBI",
-    color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+    src: "/logos/aibi.png",
+    color: "bg-white border-white/40",
   },
   {
     name: "NBPDCL (Dept of IT) — Electricity Theft AI",
     short: "NBPDCL",
-    color: "bg-teal-500/10 text-teal-300 border-teal-500/30",
+    src: "/logos/nbpdcl.png",
+    color: "bg-black border-cyan-500/40",
   },
   {
     name: "Encoders (Coding Club, SMIT) — AI/ML Co-Lead",
     short: "ENC",
-    color: "bg-cyan-500/10 text-cyan-300 border-cyan-500/30",
+    color: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-mono text-[9px] font-bold",
   },
   {
-    name: "Brain Up Labs — Software / AI Development",
+    name: "Brain Up Labs — Software & AI Engineer",
     short: "BUL",
-    color: "bg-green-500/10 text-green-300 border-green-500/30",
+    src: "/logos/brainuplabs.png",
+    color: "bg-white border-emerald-500/40",
   },
 ];
 
@@ -45,9 +48,17 @@ function CompanyStack() {
           <div
             key={comp.short}
             title={comp.name}
-            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${comp.color} border shadow-md flex items-center justify-center font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-tighter hover:z-20 hover:scale-110 transition-all cursor-pointer`}
+            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${comp.color} border shadow-lg flex items-center justify-center overflow-hidden hover:z-20 hover:scale-110 transition-all cursor-pointer`}
           >
-            {comp.short}
+            {comp.src ? (
+              <img
+                src={comp.src}
+                alt={comp.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span>{comp.short}</span>
+            )}
           </div>
         ))}
       </div>
