@@ -8,22 +8,26 @@ import { PROFILE } from "@/data/profile";
 import { motion } from "framer-motion";
 import { HoverLinkAnimation } from "./hover-link-animation";
 
-const rolesAvatars = [
+const companyLogos = [
   {
-    initials: "DEV",
-    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=100&h=100",
+    name: "Aibi Technologies — Mobile Dev Intern",
+    short: "AIBI",
+    color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
   },
   {
-    initials: "AI",
-    src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=100&h=100",
+    name: "NBPDCL (Dept of IT) — Electricity Theft AI",
+    short: "NBPDCL",
+    color: "bg-teal-500/10 text-teal-300 border-teal-500/30",
   },
   {
-    initials: "SEC",
-    src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=100&h=100",
+    name: "Encoders (Coding Club, SMIT) — AI/ML Co-Lead",
+    short: "ENC",
+    color: "bg-cyan-500/10 text-cyan-300 border-cyan-500/30",
   },
   {
-    initials: "SYS",
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=100&h=100",
+    name: "Brain Up Labs — Software / AI Development",
+    short: "BUL",
+    color: "bg-green-500/10 text-green-300 border-green-500/30",
   },
 ];
 
@@ -33,19 +37,22 @@ const stats = [
   { value: "0", label: "Production Downtime", emoji: "🛡️" },
 ];
 
-function AvatarStack() {
+function CompanyStack() {
   return (
-    <div className="flex items-center gap-2 sm:gap-3">
-      {rolesAvatars.map((role) => (
-        <Avatar key={role.initials} className="w-7 h-7 sm:w-8 sm:h-8 border border-white/20">
-          <AvatarImage src={role.src} alt={role.initials} />
-          <AvatarFallback className="text-[10px] font-mono bg-zinc-900 text-emerald-400">
-            {role.initials}
-          </AvatarFallback>
-        </Avatar>
-      ))}
-      <div className="flex items-center justify-center pl-4 pr-3 py-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[11px] font-mono text-zinc-400">
-         MULTIFACETED.
+    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+      <div className="flex -space-x-2 sm:-space-x-2.5">
+        {companyLogos.map((comp) => (
+          <div
+            key={comp.short}
+            title={comp.name}
+            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${comp.color} border shadow-md flex items-center justify-center font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-tighter hover:z-20 hover:scale-110 transition-all cursor-pointer`}
+          >
+            {comp.short}
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-center px-3.5 py-1 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[10px] sm:text-[11px] font-mono text-zinc-400">
+        EXPERIENCE: AIBI &bull; NBPDCL &bull; ENCODERS &bull; BRAIN UP LABS
       </div>
     </div>
   );
@@ -87,7 +94,7 @@ export function MarqueeHero() {
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pb-3 md:pb-4">
         <div className="space-y-3 md:space-y-4">
-          <AvatarStack />
+          <CompanyStack />
           <StatsMarquee />
         </div>
       </div>

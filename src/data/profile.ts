@@ -92,11 +92,11 @@ export const PROFILE = {
             takeaway: "Co-lead the AI/ML vertical at Encoders Coding Club, SMIT — running workshops and mentoring peers on machine learning and generative AI fundamentals."
         },
         {
-            role: "Chief Website Administrator",
-            company: "SMITMUN (Model United Nations)",
-            period: "January 2026 – Present",
-            description: "Served as the Chief Website Administrator for SMITMUN.",
-            tech: ["Web Administration", "Security", "Database Management"]
+            role: "Software & AI Engineer",
+            company: "Brain Up Labs",
+            period: "2024 – Present",
+            description: "Developing intelligent web applications, AI tools, and full-stack solutions at Brain Up Labs.",
+            tech: ["Full Stack", "AI Systems", "React", "Python"]
         },
         {
             role: "Technical Team Lead",
