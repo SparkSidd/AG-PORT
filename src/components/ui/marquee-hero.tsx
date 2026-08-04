@@ -22,11 +22,6 @@ const companyLogos = [
     color: "bg-black border-cyan-500/40",
   },
   {
-    name: "Encoders (Coding Club, SMIT) — AI/ML Co-Lead",
-    short: "ENC",
-    color: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-mono text-[9px] font-bold",
-  },
-  {
     name: "Brain Up Labs — Software & AI Engineer",
     short: "BUL",
     src: "/logos/brainuplabs.png",
@@ -50,20 +45,16 @@ function CompanyStack() {
             title={comp.name}
             className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${comp.color} border shadow-lg flex items-center justify-center overflow-hidden hover:z-20 hover:scale-110 transition-all cursor-pointer`}
           >
-            {comp.src ? (
-              <img
-                src={comp.src}
-                alt={comp.name}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span>{comp.short}</span>
-            )}
+            <img
+              src={comp.src}
+              alt={comp.name}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </div>
       <div className="flex items-center justify-center px-3.5 py-1 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[10px] sm:text-[11px] font-mono text-zinc-400">
-        EXPERIENCE: AIBI &bull; NBPDCL &bull; ENCODERS &bull; BRAIN UP LABS
+        EXPERIENCE: AIBI &bull; NBPDCL &bull; BRAIN UP LABS
       </div>
     </div>
   );
