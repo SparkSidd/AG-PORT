@@ -1,10 +1,21 @@
 /**
- * Web Audio API Sound Effects Synthesizer
- * Synthesizes clear, futuristic UI audio in real-time with zero network overhead.
+ * Web Audio API Sound Effects Synthesizer & Haptic Controller
+ * Synthesizes clear, futuristic UI audio in real-time with zero network overhead
+ * and triggers subtle native haptics on supported mobile devices.
  */
 
 let audioCtx: AudioContext | null = null;
 let soundEnabled = true;
+
+export const triggerHaptic = (duration = 8) => {
+  if (typeof window !== "undefined" && "vibrate" in navigator) {
+    try {
+      navigator.vibrate(duration);
+    } catch (_) {
+      // Ignore
+    }
+  }
+};
 
 function initAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
@@ -71,9 +82,10 @@ export const playCyberHover = () => {
 };
 
 /**
- * Play a crisp snappy cyber click
+ * Play a crisp snappy cyber click with haptic vibration
  */
 export const playCyberClick = () => {
+  triggerHaptic(8);
   if (!soundEnabled) return;
   try {
     const ctx = initAudioContext();
@@ -101,9 +113,10 @@ export const playCyberClick = () => {
 };
 
 /**
- * Play a rich two-tone confirmation chime (e.g. Copied to clipboard / Open modal)
+ * Play a rich two-tone confirmation chime with double haptic pulse
  */
 export const playCyberConfirm = () => {
+  triggerHaptic(14);
   if (!soundEnabled) return;
   try {
     const ctx = initAudioContext();

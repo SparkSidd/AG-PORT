@@ -18,6 +18,7 @@ const MusicPlayer = lazy(() => import("@/components/ui/music-player").then(modul
 const NeuralTechHub = lazy(() => import("@/components/ui/neural-tech-hub").then(module => ({ default: module.NeuralTechHub })));
 const PixelCanvas = lazy(() => import("@/components/ui/pixel-perfect-hero").then(module => ({ default: module.PixelCanvas })));
 const InfiniteBentoPanBackground = lazy(() => import("@/components/ui/infinite-bento-pan-bg").then(module => ({ default: module.InfiniteBentoPanBackground })));
+const MobileTerminalView = lazy(() => import("@/components/mobile/MobileTerminalView").then(module => ({ default: module.MobileTerminalView })));
 const NeonCrystalCity = lazy(() => import("@/components/ui/neon-crystal-city"));
 const HoloProjectHub = lazy(() => import("@/components/ui/holo-project-hub").then(module => ({ default: module.HoloProjectHub })));
 const MarqueeHero = lazy(() => import("@/components/ui/marquee-hero").then(module => ({ default: module.MarqueeHero })));
@@ -340,101 +341,7 @@ function App() {
         <kbd className="px-1 py-0.5 rounded bg-white/10 text-zinc-300 text-[8px]">K</kbd>
       </div>
 
-      {/* Mobile Glassmorphic Header & Hamburger */}
-      {isMobile && !showSplash && (
-        <div className="fixed top-0 left-0 right-0 z-[9998] bg-black/80 backdrop-blur-xl border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between pointer-events-auto">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-mono font-bold tracking-widest text-white uppercase">SIDDHARTH // PORTFOLIO</span>
-          </div>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all flex items-center gap-1.5"
-            aria-label="Toggle Navigation Menu"
-          >
-            {isMobileMenuOpen ? <X className="w-4 h-4 text-emerald-400" /> : <Menu className="w-4 h-4 text-emerald-400" />}
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider">
-              {isMobileMenuOpen ? "CLOSE" : "MENU"}
-            </span>
-          </button>
-        </div>
-      )}
 
-      {/* Mobile Glassmorphic Navigation Drawer */}
-      <AnimatePresence>
-        {isMobile && isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-3xl flex flex-col justify-between p-6 overflow-y-auto"
-          >
-            <div className="flex items-center justify-between border-b border-emerald-500/20 pb-4">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm font-mono font-bold tracking-widest text-white uppercase">NAVIGATION_SYSTEM</span>
-              </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="my-auto py-8 space-y-3">
-              {[
-                { id: "hero", label: "01 // START", sub: "Intro & Hero" },
-                { id: "about", label: "02 // WHO", sub: "Bio & Overview" },
-                { id: "projects", label: "03 // WORK", sub: "Projects & Demos" },
-                { id: "skills", label: "04 // STACK", sub: "Core Architecture" },
-                { id: "achievements", label: "05 // FEAT", sub: "Experience & Honors" },
-                { id: "contact", label: "06 // TOUCH", sub: "Connect & Contact" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all text-left group"
-                >
-                  <div>
-                    <div className="text-base font-mono font-bold text-white group-hover:text-emerald-400 transition-colors">
-                      {item.label}
-                    </div>
-                    <div className="text-xs text-zinc-400 font-sans mt-0.5">{item.sub}</div>
-                  </div>
-                  <span className="text-xs font-mono text-emerald-400 group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <div className="border-t border-white/10 pt-4 space-y-4">
-              <div className="flex flex-wrap items-center justify-around gap-2">
-                <button onClick={() => { setIsMobileMenuOpen(false); handleCopyEmail(); }} className="text-xs font-mono text-emerald-400 hover:underline cursor-pointer">
-                  COPY EMAIL
-                </button>
-                <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-zinc-400 hover:text-white">
-                  GITHUB
-                </a>
-                <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-zinc-400 hover:text-white">
-                  LINKEDIN
-                </a>
-                <button onClick={() => { setIsMobileMenuOpen(false); handleOpenResume("resume"); }} className="text-xs font-mono text-zinc-400 hover:text-white cursor-pointer">
-                  RESUME
-                </button>
-                <button onClick={() => { setIsMobileMenuOpen(false); handleOpenResume("cv"); }} className="text-xs font-mono text-zinc-400 hover:text-white cursor-pointer">
-                  CV
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Desktop Global Recruiter Action Bar */}
       <div className={`fixed top-4 left-4 md:top-6 md:left-8 z-[9999] hidden md:flex items-center gap-2 transition-all duration-500 ${showSplash || isPage6Visible ? 'opacity-0 pointer-events-none translate-y-[-20px]' : 'opacity-100 pointer-events-auto translate-y-0'}`}>
@@ -485,40 +392,10 @@ function App() {
             fontFamily="Outfit, sans-serif"
           />
         ) : (
-          /* MOBILE VIEW (<768px) - Vertical Responsive Scroll Stack */
-          <div className="flex flex-col w-full overflow-x-hidden pt-12">
-            {sections.map((section, index) => (
-              <div key={section.id || index} id={section.id} className="relative w-full min-h-screen flex flex-col items-center justify-center p-4 py-16 border-b border-white/5 scroll-mt-12">
-
-                {/* Section Background */}
-                <div className="absolute inset-0 z-0 opacity-50 overflow-hidden">
-                  {section.renderBackground && section.renderBackground(true)}
-                </div>
-
-                {/* Section Content */}
-                <div className="relative z-10 w-full max-w-4xl mx-auto">
-                  {section.id === 'projects' ? (
-                    <Suspense fallback={<div className="w-full h-48 flex items-center justify-center font-mono text-xs text-zinc-500">Loading Projects...</div>}>
-                      <HoloProjectHub />
-                    </Suspense>
-                  ) : section.id === 'skills' ? (
-                    <Suspense fallback={<div className="w-full h-48 flex items-center justify-center font-mono text-xs text-zinc-500">Loading Tech Matrix...</div>}>
-                      <NeuralTechHub />
-                    </Suspense>
-                  ) : (
-                    section.title
-                  )}
-                </div>
-
-              </div>
-            ))}
-
-            {/* Mobile Footer */}
-            <div className="py-8 text-center text-zinc-600 text-xs font-mono bg-black relative z-10">
-              <p>SYSTEM STATUS: ONLINE</p>
-              <p className="mt-2 text-[10px] opacity-50">&copy; {new Date().getFullYear()} SIDDHARTH KUMAR</p>
-            </div>
-          </div>
+          /* MOBILE VIEW (<768px) - High-Tech Dev Terminal View */
+          <Suspense fallback={<div className="min-h-screen bg-[#030708] flex items-center justify-center font-mono text-xs text-emerald-400">INITIALIZING DEV_TERMINAL...</div>}>
+            <MobileTerminalView onOpenResume={handleOpenResume} />
+          </Suspense>
         )}
       </div>
     </div>
