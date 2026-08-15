@@ -3,17 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { create } from "zustand";
-
-export const useMusicStore = create<{
-  isPlaying: boolean;
-  setPlaying: (playing: boolean) => void;
-  togglePlay: () => void;
-}>((set) => ({
-  isPlaying: false,
-  setPlaying: (playing) => set({ isPlaying: playing }),
-  togglePlay: () => set((state) => ({ isPlaying: !state.isPlaying })),
-}));
+import { useMusicStore } from "@/lib/music-store";
+export { useMusicStore };
 
 export function MusicPlayer() {
     const { isPlaying, setPlaying, togglePlay } = useMusicStore();
@@ -108,7 +99,7 @@ export function MusicPlayer() {
                 ref={audioRef}
                 src="/freedom.mp3"
                 onEnded={handleEnded}
-                preload="auto"
+                preload="none"
             />
 
             <style dangerouslySetInnerHTML={{

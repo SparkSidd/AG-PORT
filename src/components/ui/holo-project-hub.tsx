@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Github, ExternalLink, Filter, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 import { ProjectDetailsModal } from "./project-details-modal";
+import { playCyberHover, playCyberClick } from "@/lib/sound-fx";
 
 type Project = (typeof PROFILE.projects)[number];
 
@@ -150,7 +151,11 @@ export function HoloProjectHub() {
           {paginatedProjects.map((project) => (
           <div
             key={project.id}
-            onClick={() => setSelectedProject(project)}
+            onMouseEnter={playCyberHover}
+            onClick={() => {
+              playCyberClick();
+              setSelectedProject(project);
+            }}
             className="group relative rounded-xl overflow-hidden border border-white/10 bg-zinc-950/65 hover:border-emerald-500/40 hover:bg-zinc-900/40 transition-all duration-500 cursor-pointer flex flex-col justify-between h-[215px] sm:h-[225px] shadow-lg shadow-black/20"
           >
             {/* Visualizer Theme overlay */}
@@ -161,11 +166,18 @@ export function HoloProjectHub() {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
               />
               <div className="absolute top-1.5 left-1.5 z-20 px-1.5 py-0.5 rounded bg-black/80 border border-white/10 text-[7.5px] font-mono text-emerald-400 uppercase tracking-wider backdrop-blur-sm">
                 {project.category || "AI/ML"}
               </div>
+              {(project as any).featured && (
+                <div className="absolute top-1.5 right-1.5 z-20 px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/40 text-[7.5px] font-mono text-emerald-300 uppercase tracking-wider backdrop-blur-sm shadow-[0_0_8px_rgba(16,185,129,0.3)]">
+                  ★ Flagship
+                </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80" />
             </div>
 

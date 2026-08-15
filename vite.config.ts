@@ -373,5 +373,35 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    build: {
+      target: 'esnext',
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('three') || id.includes('@react-three')) {
+                return 'vendor-three';
+              }
+              if (id.includes('framer-motion')) {
+                return 'vendor-framer';
+              }
+              if (id.includes('gsap')) {
+                return 'vendor-gsap';
+              }
+              if (id.includes('lucide-react')) {
+                return 'vendor-icons';
+              }
+              if (id.includes('remotion') || id.includes('@remotion')) {
+                return 'vendor-remotion';
+              }
+              if (id.includes('react') || id.includes('react-dom') || id.includes('zustand')) {
+                return 'vendor-react';
+              }
+            }
+          },
+        },
+      },
+    },
   }
 })

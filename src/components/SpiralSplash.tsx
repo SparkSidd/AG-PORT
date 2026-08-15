@@ -2,7 +2,8 @@
 
 import { SpiralAnimation } from "@/components/ui/spiral-animation"
 import { useState, useEffect } from 'react'
-import { useMusicStore } from "@/components/ui/music-player"
+import { useMusicStore } from "@/lib/music-store"
+import { playCyberClick, playCyberHover } from "@/lib/sound-fx"
 
 interface SpiralSplashProps {
     onEnter: () => void;
@@ -16,6 +17,7 @@ export const SpiralSplash = ({ onEnter }: SpiralSplashProps) => {
   
   // Handle navigation to personal site
   const handleEnter = () => {
+    playCyberClick();
     // Start music
     setPlaying(true);
     
@@ -51,6 +53,7 @@ export const SpiralSplash = ({ onEnter }: SpiralSplashProps) => {
       >
         <button 
           onClick={handleEnter}
+          onMouseEnter={playCyberHover}
           className="
             text-white text-2xl tracking-[0.2em] uppercase font-extralight
             transition-all duration-700

@@ -9,6 +9,7 @@ import {
 } from 'framer-motion';
 import { Plus, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { playCyberHover, playCyberClick } from '@/lib/sound-fx';
 
 interface MicroExpanderProps
     extends Omit<HTMLMotionProps<'button'>, 'children'> {
@@ -65,6 +66,7 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
 
         const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
             if (isLoading) return;
+            playCyberClick();
             onClick?.(e);
         };
 
@@ -83,7 +85,10 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
                 animate={isLoading ? 'loading' : isHovered ? 'hover' : 'initial'}
                 variants={containerVariants}
                 transition={{ type: 'spring', stiffness: 150, damping: 20, mass: 0.8 }}
-                onMouseEnter={() => setIsHovered(true)}
+                onMouseEnter={() => {
+                    setIsHovered(true);
+                    playCyberHover();
+                }}
                 onMouseLeave={() => setIsHovered(false)}
                 onFocus={() => setIsHovered(true)}
                 onBlur={() => setIsHovered(false)}

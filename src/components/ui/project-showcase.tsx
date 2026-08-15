@@ -230,6 +230,8 @@ export function ProjectShowcase() {
                   <img
                     src={activeProject.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000"}
                     alt={activeProject.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover rounded-lg opacity-85 transition-opacity duration-300"
                   />
                   {/* Neon screen grid */}

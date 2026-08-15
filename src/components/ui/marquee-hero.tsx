@@ -12,19 +12,19 @@ const companyLogos = [
   {
     name: "Aibi Technologies — Mobile Dev Intern",
     short: "AIBI",
-    src: "/logos/aibi.png",
+    src: "/logos/aibi.webp",
     color: "bg-white border-white/40",
   },
   {
     name: "NBPDCL (Dept of IT) — Electricity Theft AI",
     short: "NBPDCL",
-    src: "/logos/nbpdcl.png",
+    src: "/logos/nbpdcl.webp",
     color: "bg-black border-cyan-500/40",
   },
   {
     name: "Brain Up Labs — Software & AI Engineer",
     short: "BUL",
-    src: "/logos/brainuplabs.png",
+    src: "/logos/brainuplabs.webp",
     color: "bg-white border-emerald-500/40",
   },
 ];
@@ -48,6 +48,8 @@ function CompanyStack() {
             <img
               src={comp.src}
               alt={comp.name}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>

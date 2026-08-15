@@ -208,6 +208,8 @@ Source Code
     <img 
       src={project.demoMedia} 
       alt={project.title} 
+      loading="lazy"
+      decoding="async"
       className="w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
     />
   ) : (
